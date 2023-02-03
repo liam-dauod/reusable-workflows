@@ -29,7 +29,7 @@ jobs:
       - name: Install Dependencies
         shell: bash
         run: |
-            pwd && ls -a && ${{ inputs.npm-install-command }}
+            ${{ inputs.npm-install-command }}
 
       - name: Run Provider Api
         shell: bash
