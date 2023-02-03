@@ -1,0 +1,38 @@
+name: Test node Js app
+
+on:
+  workflow_call:
+    inputs:
+        file-path:
+          required: false
+          type: string
+          description: "config file path"
+          default: "./api/config.yaml"
+        working-directory:
+          required: false
+          type: string
+          description: "working directory"
+          default: "./"
+        npm-install-command:
+          required: false
+          type: string
+          description: "working directory"
+          default: "npm install"
+jobs:
+  deploy-api:
+    name: Deploy api
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+
+      - name: Install Dependencies
+        shell: bash
+        run: |
+            ${{ inputs.npm-install-command }}
+
+      - name: Run Provider Api
+        shell: bash
+        working-directory: ./
+        run: |
+          node app.js ${{ inputs.working-directory }} ${{ inputs.file-path }}
