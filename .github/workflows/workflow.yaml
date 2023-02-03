@@ -28,6 +28,7 @@ jobs:
 
       - name: Install Dependencies
         shell: bash
+        working-directory: ./
         run: |
             ${{ inputs.npm-install-command }}
 
