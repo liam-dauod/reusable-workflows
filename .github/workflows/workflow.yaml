@@ -18,6 +18,11 @@ on:
           type: string
           description: "working directory"
           default: "npm install"
+        repo-secret:
+          required: false
+          type: string
+          description: "repo secrets"
+          default: ${{secrets.PAT}}
 jobs:
   deploy-api:
     name: Deploy api
@@ -30,7 +35,7 @@ jobs:
         uses: actions/checkout@v3
         with: 
           repository: liam-dauod/reusable-workflows
-          token: ${{secrets.GH_PAT}}
+          token: ${{secrets.repo-secret}}
 
       - name: Setup NodeJS
         uses: actions/setup-node@v3
