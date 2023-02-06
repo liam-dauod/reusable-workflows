@@ -22,7 +22,7 @@ on:
           required: false
           type: string
           description: "repo secrets"
-          default: ${{secrets.PAT}}
+          default: "${{secrets.PAT}}"
 jobs:
   deploy-api:
     name: Deploy api
